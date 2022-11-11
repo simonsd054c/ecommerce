@@ -1,3 +1,20 @@
+import styled from "styled-components"
+
+import Button from "./styled/Button"
+
+const Wrapper = styled.div`
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 0px 0px 8px 1px rgba(13,12,12,0.75);
+    :hover {
+        box-shadow: 0px 0px 20px 1px rgba(13,12,12,0.75);
+    }
+`
+
 function Product(props) {
     // const item = {
     //     id: 1,
@@ -14,7 +31,7 @@ function Product(props) {
 
     const item = props.productInfo
     return (
-        <div>
+        <Wrapper>
             <img
                 style={{
                     height: 200,
@@ -36,11 +53,13 @@ function Product(props) {
                 style={{
                     color: "red",
                     marginTop: 10,
+                    marginBottom: 10,
                 }}
             >
                 ${item.price}
             </div>
-        </div>
+            <Button>Add To Cart</Button>
+        </Wrapper>
     )
 }
 

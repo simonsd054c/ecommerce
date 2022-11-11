@@ -1,3 +1,7 @@
+import Title from "./styled/Title"
+import GridBox from "./styled/GridBox"
+import CartItem from "./CartItem"
+
 function Cart() {
     const items = [
         {
@@ -27,39 +31,15 @@ function Cart() {
     ]
 
     return (
-        <div>
-            <h2>Cart</h2>
-            {items.map((item) => {
-                return (
-                    <div>
-                        <img
-                            style={{
-                                height: 200,
-                            }}
-                            src={item.image}
-                            alt="Bag"
-                        ></img>
-                        <div
-                            style={{
-                                fontSize: 25,
-                                fontWeight: 700,
-                                marginBottom: 10,
-                            }}
-                        >
-                            {item.title}
-                        </div>
-                        <div>{item.description}</div>
-                        <div
-                            style={{
-                                color: "red",
-                                marginTop: 10,
-                            }}
-                        >
-                            ${item.price}
-                        </div>
-                    </div>
-                )
-            })}
+        <div id="cart">
+            <Title>Cart</Title>
+            <GridBox>
+                {items.map((item) => {
+                    return (
+                        <CartItem key={item.id} item={item} />
+                    )
+                })}
+            </GridBox>
         </div>
     )
 }
