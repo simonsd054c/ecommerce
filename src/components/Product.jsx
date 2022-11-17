@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styled from "styled-components"
 
 import Button from "./styled/Button"
@@ -9,27 +10,22 @@ const Wrapper = styled.div`
     align-items: center;
     border-radius: 10px;
     transition: 0.3s;
-    box-shadow: 0px 0px 8px 1px rgba(13,12,12,0.75);
+    box-shadow: 0px 0px 8px 1px rgba(13, 12, 12, 0.75);
     :hover {
-        box-shadow: 0px 0px 20px 1px rgba(13,12,12,0.75);
+        box-shadow: 0px 0px 20px 1px rgba(13, 12, 12, 0.75);
     }
 `
 
 function Product(props) {
-    // const item = {
-    //     id: 1,
-    //     title: "Bag",
-    //     price: 50,
-    //     description: "Bags for every occasion",
-    //     category: "men's clothing",
-    //     image: "https://robohash.org/bag",
-    //     rating: {
-    //         rate: 4,
-    //         count: 100,
-    //     },
-    // }
-
     const item = props.productInfo
+    const [itemOnCart, setItemOnCart] = useState(0)
+
+    function handleAddToCart() {
+        setItemOnCart((prevState) => {
+            return prevState + 1
+        })
+    }
+
     return (
         <Wrapper>
             <img
@@ -58,7 +54,16 @@ function Product(props) {
             >
                 ${item.price}
             </div>
-            <Button>Add To Cart</Button>
+            <div>Stock: {item.stock}</div>
+            <div>Stock Left: {item.stock - itemOnCart}</div>
+
+            <Button
+                greaterThanfive={itemOnCart > 5}
+                disabled={item.stock === itemOnCart}
+                onClick={handleAddToCart}
+            >
+                {item.stock === itemOnCart ? "No Stock Left" : "Add To Cart"}
+            </Button>
         </Wrapper>
     )
 }

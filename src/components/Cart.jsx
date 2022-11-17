@@ -15,6 +15,7 @@ function Cart() {
                 rate: 4,
                 count: 100,
             },
+            stock: 10,
         },
         {
             id: 2,
@@ -27,6 +28,7 @@ function Cart() {
                 rate: 4,
                 count: 100,
             },
+            stock: 10,
         },
     ]
 
