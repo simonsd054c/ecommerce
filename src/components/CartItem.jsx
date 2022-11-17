@@ -1,5 +1,23 @@
+import { useState } from "react"
+
 const CartItem = (props) => {
+
+    const [noOfItems, setNoOfitems] = useState(1)
+
     const item = props.item
+
+    const handleDecrease = () => {
+        setNoOfitems((prevState) => {
+            return prevState - 1
+        })
+    }
+
+    const handleIncrease = () => {
+        setNoOfitems((prevState) => {
+            return prevState + 1
+        })
+    }
+
     return (
         <div style={{
             display: 'flex',
@@ -31,15 +49,17 @@ const CartItem = (props) => {
             >
                 ${item.price}
             </div>
+            <div>Stock: {item.stock}</div>
             <div style={{
                 marginTop: 5
             }}>
-                <button>-</button>
+                <button disabled={noOfItems === 0} onClick={handleDecrease}>-</button>
                 <span style={{
                     margin: '0px 5px'
-                }}>5</span>
-                <button>+</button>
+                }}>{noOfItems}</span>
+                <button disabled={noOfItems === item.stock} onClick={handleIncrease}>+</button>
             </div>
+            <div>Total Price: ${noOfItems * item.price}</div>
         </div>
     )
 }

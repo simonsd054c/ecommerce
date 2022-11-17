@@ -22,6 +22,7 @@ function ProductList() {
                 rate: 4,
                 count: 100,
             },
+            stock: 10,
         },
         {
             id: 2,
@@ -34,6 +35,7 @@ function ProductList() {
                 rate: 4,
                 count: 100,
             },
+            stock: 10,
         },
         {
             id: 3,
@@ -46,6 +48,7 @@ function ProductList() {
                 rate: 4,
                 count: 100,
             },
+            stock: 10,
         },
         {
             id: 4,
@@ -58,6 +61,7 @@ function ProductList() {
                 rate: 4,
                 count: 100,
             },
+            stock: 10,
         },
         {
             id: 5,
@@ -70,6 +74,7 @@ function ProductList() {
                 rate: 4,
                 count: 100,
             },
+            stock: 10,
         },
         {
             id: 6,
@@ -82,6 +87,7 @@ function ProductList() {
                 rate: 4,
                 count: 100,
             },
+            stock: 10,
         },
         {
             id: 7,
@@ -94,6 +100,7 @@ function ProductList() {
                 rate: 4,
                 count: 100,
             },
+            stock: 10,
         },
         {
             id: 8,
@@ -106,6 +113,7 @@ function ProductList() {
                 rate: 4,
                 count: 100,
             },
+            stock: 10,
         },
         {
             id: 9,
@@ -118,6 +126,7 @@ function ProductList() {
                 rate: 4,
                 count: 100,
             },
+            stock: 10,
         },
     ]
     return (
