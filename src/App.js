@@ -4,7 +4,10 @@ import CircularProgress from "@mui/material/CircularProgress"
 import Box from "@mui/material/Box"
 
 //importing named exports - name must be same
-import { ProductList } from "./components/ProductList"
+// import { ProductList } from "./components/ProductList"
+
+import ProductListClass from "./components/ProductListClass"
+import ProductInfo from "./components/ProductInfo"
 
 //rename named exports using as
 // import {Button as ProductListButton} from "another file"
@@ -14,6 +17,11 @@ import NavBar from "./components/mui/NavBar"
 
 function App() {
     const [isLoading, setIsLoading] = useState(true)
+    const [selectedItem, setSelectedItem] = useState(null)
+
+    function setItem(item) {
+        setSelectedItem(item)
+    }
 
     setTimeout(() => {
         setIsLoading(false)
@@ -35,7 +43,8 @@ function App() {
             ) : (
                 <div className="App">
                     <NavBar />
-                    <ProductList />
+                    <ProductListClass setItem={setItem} />
+                    <ProductInfo item={selectedItem} />
                     <Cart />
                 </div>
             )}
