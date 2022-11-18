@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 //importing default exports - name can be different
-import Product from "./Product"
+// import Product from "./Product"
+import ProductClass from "./ProductClass"
 import Title from "./styled/Title"
 import GridBox from "./styled/GridBox"
 
@@ -134,11 +135,8 @@ function ProductList() {
             <Title>Products</Title>
             <CustomGrid>
                 {items.map((item) => {
-                    return <Product key={item.id} productInfo={item} />
+                    return <ProductClass key={item.id} productInfo={item} />
                 })}
-                {/* <Product productInfo={items[0]} />
-            <Product productInfo={items[1]} />
-            <Product productInfo={items[2]} /> */}
             </CustomGrid>
         </div>
     )
