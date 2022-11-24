@@ -27,7 +27,9 @@ function Product(props) {
     }
 
     return (
-        <Wrapper>
+        <Wrapper onClick={() => {
+            props.setItem(item)
+        }}>
             <img
                 style={{
                     height: 200,
