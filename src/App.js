@@ -4,9 +4,9 @@ import CircularProgress from "@mui/material/CircularProgress"
 import Box from "@mui/material/Box"
 
 //importing named exports - name must be same
-// import { ProductList } from "./components/ProductList"
+import { ProductList } from "./components/ProductList"
 
-import ProductListClass from "./components/ProductListClass"
+// import ProductListClass from "./components/ProductListClass"
 import ProductInfo from "./components/ProductInfo"
 
 //rename named exports using as
@@ -43,7 +43,7 @@ function App() {
             ) : (
                 <div className="App">
                     <NavBar />
-                    <ProductListClass setItem={setItem} />
+                    <ProductList setItem={setItem} />
                     <ProductInfo item={selectedItem} />
                     <Cart />
                 </div>
