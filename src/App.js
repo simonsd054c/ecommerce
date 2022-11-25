@@ -9,6 +9,9 @@ import { ProductList } from "./components/ProductList"
 // import ProductListClass from "./components/ProductListClass"
 import ProductInfo from "./components/ProductInfo"
 
+import AddProduct from "./components/AddProduct"
+import Login from "./components/Login"
+
 //rename named exports using as
 // import {Button as ProductListButton} from "another file"
 
@@ -43,8 +46,10 @@ function App() {
             ) : (
                 <div className="App">
                     <NavBar />
+                    <Login />
                     <ProductList setItem={setItem} />
                     <ProductInfo item={selectedItem} />
+                    <AddProduct />
                     <Cart />
                 </div>
             )}
