@@ -27,6 +27,8 @@ import NavBar from "./components/mui/NavBar"
 import { GlobalContext } from "./components/utils/globalStateContext"
 import globalReducer from "./components/reducers/globalReducer"
 
+import ProtectedRoute from "./components/ProtectedRoute"
+
 function App() {
     const [isLoading, setIsLoading] = useState(true)
 
@@ -84,8 +86,10 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<MainPage />}>
             <Route path="login" element={<Login />} />
-            <Route path="products/add" element={<AddProduct />} />
-            <Route path="cart" element={<Cart />} />
+            <Route element={<ProtectedRoute />}>
+                <Route path="products/add" element={<AddProduct />} />
+                <Route path="cart" element={<Cart />} />
+            </Route>
             <Route path="product/:productId" element={<ProductInfo />} />
             <Route path="/" element={<ProductList />} />
         </Route>
@@ -93,7 +97,6 @@ const router = createBrowserRouter(
 )
 
 function MainPage() {
-
     return (
         <>
             <NavBar />
