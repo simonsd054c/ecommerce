@@ -24,9 +24,7 @@ function Login() {
         apiError: null,
     })
 
-    const [userFetched, setUserFetched] = useState(false)
-
-    const { dispatch } = useGlobalContext()
+    const { store, dispatch } = useGlobalContext()
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -62,7 +60,6 @@ function Login() {
                 .post("/auth/login", user)
                 .then((res) => res.data)
                 .then((json) => {
-                    setUserFetched(true)
                     dispatch({
                         type: 'setToken',
                         data: json.token
@@ -95,7 +92,7 @@ function Login() {
 
     return (
         <>
-            {userFetched ? (
+            {store.loggedInUserName ? (
                 <Title>Login Successful</Title>
             ) : (
                 <div>

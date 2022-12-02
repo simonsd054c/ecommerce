@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react"
+import { useEffect, useReducer, useState } from "react"
 
 import CircularProgress from "@mui/material/CircularProgress"
 import Box from "@mui/material/Box"
@@ -38,6 +38,21 @@ function App() {
     setTimeout(() => {
         setIsLoading(false)
     }, 2000)
+
+    useEffect(() => {
+        const username = localStorage.getItem("username")
+        const token = localStorage.getItem("token")
+        if(username && token) {
+            dispatch({
+                type: 'setLoggedInUserName',
+                data: username
+            })
+            dispatch({
+                type: 'setToken',
+                data: token
+            })
+        }
+    }, [])
 
     return (
         <>
