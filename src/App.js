@@ -28,6 +28,7 @@ import { GlobalContext } from "./components/utils/globalStateContext"
 import globalReducer from "./components/reducers/globalReducer"
 
 import ProtectedRoute from "./components/ProtectedRoute"
+import NotFound from "./components/NotFound"
 
 function App() {
     const [isLoading, setIsLoading] = useState(true)
@@ -84,7 +85,7 @@ function App() {
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<MainPage />}>
+        <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
             <Route path="login" element={<Login />} />
             <Route element={<ProtectedRoute />}>
                 <Route path="products/add" element={<AddProduct />} />
