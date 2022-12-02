@@ -22,7 +22,7 @@ import Login from "./components/Login"
 //rename named exports using as
 // import {Button as ProductListButton} from "another file"
 
-import Cart from "./components/Cart"
+import Cart, { loader } from "./components/Cart"
 import NavBar from "./components/mui/NavBar"
 import { GlobalContext } from "./components/utils/globalStateContext"
 import globalReducer from "./components/reducers/globalReducer"
@@ -39,6 +39,20 @@ function App() {
     }
 
     const [store, dispatch] = useReducer(globalReducer, initialState)
+
+    const router = createBrowserRouter(
+        createRoutesFromElements(
+            <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
+                <Route path="login" element={<Login />} />
+                <Route element={<ProtectedRoute />}>
+                    <Route path="products/add" element={<AddProduct />} />
+                    <Route path="cart" element={<Cart />} loader={loader} />
+                </Route>
+                <Route path="product/:productId" element={<ProductInfo />} />
+                <Route path="/" element={<ProductList />} />
+            </Route>
+        )
+    )
 
     setTimeout(() => {
         setIsLoading(false)
@@ -82,20 +96,6 @@ function App() {
         </>
     )
 }
-
-const router = createBrowserRouter(
-    createRoutesFromElements(
-        <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
-            <Route path="login" element={<Login />} />
-            <Route element={<ProtectedRoute />}>
-                <Route path="products/add" element={<AddProduct />} />
-                <Route path="cart" element={<Cart />} />
-            </Route>
-            <Route path="product/:productId" element={<ProductInfo />} />
-            <Route path="/" element={<ProductList />} />
-        </Route>
-    )
-)
 
 function MainPage() {
     return (
