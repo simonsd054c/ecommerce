@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router-dom"
 import { AppBar, Box, Button, Container, Toolbar } from "@mui/material"
 import { useGlobalContext } from "../utils/globalStateContext"
 
@@ -5,19 +6,21 @@ function NavBar() {
     const navBarItems = [
         {
             title: "Products",
-            id: "#products",
+            linkTo: "/",
         },
         {
             title: "Add Product",
-            id: "#addProduct",
+            linkTo: "products/add",
         },
         {
             title: "Cart",
-            id: "#cart",
+            linkTo: "cart",
         },
     ]
 
     const { store, dispatch } = useGlobalContext()
+
+    const navigate = useNavigate()
 
     return (
         <AppBar position="static">
@@ -26,12 +29,12 @@ function NavBar() {
                     <Box sx={{ flexGrow: 1, display: "flex" }}>
                         {navBarItems.map((item) => {
                             return (
-                                <a
+                                <Link
                                     key={item.title}
                                     style={{
                                         textDecoration: "none",
                                     }}
-                                    href={item.id}
+                                    to={item.linkTo}
                                 >
                                     <Button
                                         sx={{
@@ -42,24 +45,34 @@ function NavBar() {
                                     >
                                         {item.title}
                                     </Button>
-                                </a>
+                                </Link>
                             )
                         })}
                     </Box>
                     {store.loggedInUserName}
-                    {store.loggedInUserName && (
-                        <button 
+                    {store.loggedInUserName ? (
+                        <button
                             onClick={() => {
                                 dispatch({
-                                    type: 'setToken',
-                                    data: null
+                                    type: "setToken",
+                                    data: null,
                                 })
                                 dispatch({
-                                    type: 'setLoggedInUserName',
-                                    data: null
+                                    type: "setLoggedInUserName",
+                                    data: null,
                                 })
                             }}
-                        >Logout</button>
+                        >
+                            Logout
+                        </button>
+                    ) : (
+                        <button
+                            onClick={() => {
+                                navigate("login")
+                            }}
+                        >
+                            Login
+                        </button>
                     )}
                 </Toolbar>
             </Container>
