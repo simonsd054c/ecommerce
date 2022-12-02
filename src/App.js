@@ -4,7 +4,7 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
-  Outlet
+  Outlet,
 } from "react-router-dom";
 
 import CircularProgress from "@mui/material/CircularProgress";
@@ -82,9 +82,11 @@ function App() {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-  <Route path="/" element={<MainPage />}>
-    <Route path="login" element={<Login />}/>
-  </Route>
+    <Route path="/" element={<MainPage />}>
+      <Route path="login" element={<Login />} />
+      <Route path="products/add" element={<AddProduct />} />
+      <Route path="cart" element={<Cart />} />
+    </Route>
   )
 );
 
