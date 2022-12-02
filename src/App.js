@@ -46,7 +46,7 @@ function App() {
                 <Route path="login" element={<Login />} />
                 <Route element={<ProtectedRoute />}>
                     <Route path="products/add" element={<AddProduct />} />
-                    <Route path="cart" element={<Cart />} loader={loader} />
+                    <Route path="cart" element={<Cart />} loader={store.token ? loader: () => null} />
                 </Route>
                 <Route path="product/:productId" element={<ProductInfo />} />
                 <Route path="/" element={<ProductList />} />
