@@ -86,16 +86,13 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="products/add" element={<AddProduct />} />
       <Route path="cart" element={<Cart />} />
+      <Route path="product/:productId" element={<ProductInfo />} />
+      <Route path="/" element={<ProductList />} />
     </Route>
   )
 );
 
 function MainPage() {
-  const [selectedItem, setSelectedItem] = useState(null);
-
-  function setItem(item) {
-    setSelectedItem(item);
-  }
 
   return (
     <>
