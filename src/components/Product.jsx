@@ -23,7 +23,8 @@ function Product(props) {
 
     const navigate = useNavigate()
 
-    function handleAddToCart() {
+    function handleAddToCart(e) {
+        e.stopPropagation()
         setItemOnCart((prevState) => {
             return prevState + 1
         })
@@ -31,7 +32,7 @@ function Product(props) {
 
     return (
         <Wrapper onClick={() => {
-            navigate(`product/${item.id}`)
+            navigate(`product/${item._id}`)
         }}>
             <img
                 style={{

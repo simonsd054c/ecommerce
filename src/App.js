@@ -29,6 +29,7 @@ import globalReducer from "./components/reducers/globalReducer"
 
 import ProtectedRoute from "./components/ProtectedRoute"
 import NotFound from "./components/NotFound"
+import Register from "./components/Register"
 
 function App() {
     const [isLoading, setIsLoading] = useState(true)
@@ -44,6 +45,7 @@ function App() {
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
                 <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
                 <Route element={<ProtectedRoute />}>
                     <Route path="products/add" element={<AddProduct />} />
                     <Route path="cart" element={<Cart />} loader={store.token ? loader: () => null} />

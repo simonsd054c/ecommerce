@@ -5,7 +5,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-axios.defaults.baseURL = "https://fakestoreapi.com"
+axios.defaults.baseURL = "http://localhost:5000" // the url of our backend API
+
+//If we intercept requst, it changes the request object before we hit the API
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token")
+  if(token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
+})
+
+//If we intercept response, it changes the response object after getting the response from 
+// the API but before handing it to the frontend
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

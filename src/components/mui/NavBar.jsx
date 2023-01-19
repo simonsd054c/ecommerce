@@ -66,13 +66,22 @@ function NavBar() {
                             Logout
                         </button>
                     ) : (
-                        <button
-                            onClick={() => {
-                                navigate("login")
-                            }}
-                        >
-                            Login
-                        </button>
+                        <>
+                            <button
+                                onClick={() => {
+                                    navigate("login")
+                                }}
+                            >
+                                Login
+                            </button>
+                            <button
+                                onClick={() => {
+                                    navigate("register")
+                                }}
+                            >
+                                Register
+                            </button>
+                        </>
                     )}
                 </Toolbar>
             </Container>
