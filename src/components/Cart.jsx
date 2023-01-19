@@ -22,7 +22,7 @@ function Cart() {
 
 export function loader() {
     return axios
-        .get("/carts/5")
+        .get("/carts/cart")
         .then((res) => res.data)
         .then((json) => {
             const products = json.products
