@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-axios.defaults.baseURL = "http://localhost:5000" // the url of our backend API
+axios.defaults.baseURL = "https://ecommerce-backend-production-ad3e.up.railway.app" // the url of our backend API
 
 //If we intercept requst, it changes the request object before we hit the API
 axios.interceptors.request.use((config) => {
